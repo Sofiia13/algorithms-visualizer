@@ -6,5 +6,12 @@ type Props = {
 };
 
 export const Button: React.FC<Props> = ({ text, onClickFunc }) => {
-  return <button onClick={onClickFunc}>{text}</button>;
+  return (
+    <button
+      className="bg-yellow-400 hover:bg-amber-300 text-black font-bold py-2 px-4 rounded-full cursor-pointer"
+      onClick={onClickFunc}
+    >
+      {text}
+    </button>
+  );
 };

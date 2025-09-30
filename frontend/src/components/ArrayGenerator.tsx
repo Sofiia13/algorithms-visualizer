@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { bubbleSort } from "../algorithms/bubbleSort";
 import type { Step } from "../algorithms/types";
 import { selectionSort } from "../algorithms/selectionSort";
@@ -7,10 +7,12 @@ import { insertionSort } from "../algorithms/insertionSort";
 import { mergeSort } from "../algorithms/mergeSort";
 import { heapSort } from "../algorithms/heapSort";
 import { quickSort } from "../algorithms/quickSort";
+import { ArrayChart } from "./ArrayChart";
 
 export const ArrayGenerator = () => {
-  const [arrLength, setArrLength] = useState<number>(30);
+  const [arrLength, setArrLength] = useState<number>(50);
   const [arr, setArr] = useState<number[]>([]);
+  const [highlighted, setHighlighted] = useState<number[]>([]);
 
   const generateArr = () => {
     const newArr: number[] = [];
@@ -22,68 +24,65 @@ export const ArrayGenerator = () => {
   };
 
   const animateSort = (sort: Step[]) => {
-    const steps: Step[] = sort;
-    steps.forEach((step, idx) => {
+    sort.forEach((step, idx) => {
       setTimeout(() => {
-        if (step.type === "swap" && step.array) setArr(step.array);
-        // Тут можна додати підсвічування step.indices під час compare
-      }, idx * 50); // 100ms між кроками
+        if (step.type === "swap" && step.array) {
+          setArr(step.array);
+        }
+        if (step.type === "compare") {
+          setHighlighted(step.indices);
+        }
+      }, idx * 100);
     });
   };
 
+  useEffect(() => {
+    generateArr();
+  }, []);
+
   return (
     <div>
-      <button onClick={generateArr}>Generate Array</button>
-
-      <Button
-        text="Bubble Sort"
-        onClickFunc={() => animateSort(bubbleSort([...arr]))}
-      />
-
-      <Button
-        text="Selection Sort"
-        onClickFunc={() => animateSort(selectionSort([...arr]))}
-      />
-
-      <Button
-        text="Insertion Sort"
-        onClickFunc={() => animateSort(insertionSort([...arr]))}
-      />
-
-      <Button
-        text="Merge Sort"
-        onClickFunc={() => animateSort(mergeSort([...arr]))}
-      />
-
-      <Button
-        text="Quick Sort"
-        onClickFunc={() => animateSort(quickSort([...arr]))}
-      />
-
-      <Button
-        text="Heap Sort"
-        onClickFunc={() => animateSort(heapSort([...arr]))}
-      />
-
-      <div
-        style={{
-          display: "flex",
-          gap: "2px",
-          marginTop: "10px",
-          alignItems: "flex-end",
-          height: "300px",
-        }}
+      <button
+        className="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-4 px-6 rounded"
+        onClick={generateArr}
       >
-        {arr.map((value, idx) => (
-          <div
-            key={idx}
-            style={{
-              height: `${value}px`,
-              width: "10px",
-              backgroundColor: "turquoise",
-            }}
-          ></div>
-        ))}
+        Generate Array
+      </button>
+
+      <div className="flex gap-4 p-4">
+        <Button
+          text="Bubble Sort"
+          onClickFunc={() => animateSort(bubbleSort([...arr]))}
+        />
+
+        <Button
+          text="Selection Sort"
+          onClickFunc={() => animateSort(selectionSort([...arr]))}
+        />
+
+        <Button
+          text="Insertion Sort"
+          onClickFunc={() => animateSort(insertionSort([...arr]))}
+        />
+
+        <Button
+          text="Merge Sort"
+          onClickFunc={() => animateSort(mergeSort([...arr]))}
+        />
+
+        <Button
+          text="Quick Sort"
+          onClickFunc={() => animateSort(quickSort([...arr]))}
+        />
+
+        <Button
+          text="Heap Sort"
+          onClickFunc={() => animateSort(heapSort([...arr]))}
+        />
+      </div>
+
+      <div style={{ marginTop: "10px" }}>
+        <ArrayChart array={arr} highlighted={highlighted} />
       </div>
     </div>
   );
