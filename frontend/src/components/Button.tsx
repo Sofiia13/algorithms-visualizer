@@ -8,7 +8,7 @@ type Props = {
 export const Button: React.FC<Props> = ({ text, onClickFunc }) => {
   return (
     <button
-      className="bg-yellow-400 hover:bg-amber-300 text-black font-bold py-2 px-4 rounded-full cursor-pointer"
+      className="bg-[#ffd803] hover:bg-amber-300 text-[#272343] font-bold py-2 px-4 rounded-full cursor-pointer"
       onClick={onClickFunc}
     >
       {text}

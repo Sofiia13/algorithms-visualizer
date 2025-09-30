@@ -8,6 +8,7 @@ import { mergeSort } from "../algorithms/mergeSort";
 import { heapSort } from "../algorithms/heapSort";
 import { quickSort } from "../algorithms/quickSort";
 import { ArrayChart } from "./ArrayChart";
+import { NumberInput } from "./NumberInput";
 
 export const ArrayGenerator = () => {
   const [arrLength, setArrLength] = useState<number>(50);
@@ -42,12 +43,20 @@ export const ArrayGenerator = () => {
 
   return (
     <div>
-      <button
-        className="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-4 px-6 rounded"
-        onClick={generateArr}
-      >
-        Generate Array
-      </button>
+      <div className="py-7 flex row gap-4">
+        <NumberInput
+          value={arrLength}
+          onChange={setArrLength}
+          min={1}
+          max={100}
+        />
+        <button
+          className="bg-[#7dd8e8] hover:bg-cyan-500 cursor-pointer text-black font-bold py-4 px-6 rounded"
+          onClick={generateArr}
+        >
+          Generate Array
+        </button>
+      </div>
 
       <div className="flex gap-4 p-4">
         <Button
