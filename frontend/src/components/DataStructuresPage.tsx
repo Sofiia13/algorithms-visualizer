@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { useState } from "react";
 import { Stack } from "./Stack";
 import { Queue } from "./Queue";
+import { Heap } from "./Heap";
 
 type Props = {};
 
@@ -39,6 +40,7 @@ export const DataStructurePage: React.FC<Props> = () => {
         {selectedStructure === "Queue" && <Queue type="normal" />}
         {selectedStructure === "Stack" && <Stack />}
         {selectedStructure === "Priority Queue" && <Queue type="priority" />}
+        {selectedStructure === "Heap" && <Heap />}
       </div>
     </div>
   );
