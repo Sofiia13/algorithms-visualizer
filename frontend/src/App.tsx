@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { ArrayGenerator } from "./components/ArrayGenerator";
 import { Header } from "./components/Header";
@@ -10,7 +10,7 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<ArrayGenerator />} />
+        <Route path="/" element={<Navigate to="/sorting" replace />} />
         <Route path="/sorting" element={<ArrayGenerator />} />
         <Route path="/data-structures" element={<DataStructurePage />} />
       </Routes>
