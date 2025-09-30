@@ -5,6 +5,8 @@ import { selectionSort } from "../algorithms/selectionSort";
 import { Button } from "./Button";
 import { insertionSort } from "../algorithms/insertionSort";
 import { mergeSort } from "../algorithms/mergeSort";
+import { heapSort } from "../algorithms/heapSort";
+import { quickSort } from "../algorithms/quickSort";
 
 export const ArrayGenerator = () => {
   const [arrLength, setArrLength] = useState<number>(30);
@@ -51,6 +53,16 @@ export const ArrayGenerator = () => {
       <Button
         text="Merge Sort"
         onClickFunc={() => animateSort(mergeSort([...arr]))}
+      />
+
+      <Button
+        text="Quick Sort"
+        onClickFunc={() => animateSort(quickSort([...arr]))}
+      />
+
+      <Button
+        text="Heap Sort"
+        onClickFunc={() => animateSort(heapSort([...arr]))}
       />
 
       <div
