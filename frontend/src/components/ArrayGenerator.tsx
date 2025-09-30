@@ -4,6 +4,7 @@ import type { Step } from "../algorithms/types";
 import { selectionSort } from "../algorithms/selectionSort";
 import { Button } from "./Button";
 import { insertionSort } from "../algorithms/insertionSort";
+import { mergeSort } from "../algorithms/mergeSort";
 
 export const ArrayGenerator = () => {
   const [arrLength, setArrLength] = useState<number>(30);
@@ -45,6 +46,11 @@ export const ArrayGenerator = () => {
       <Button
         text="Insertion Sort"
         onClickFunc={() => animateSort(insertionSort([...arr]))}
+      />
+
+      <Button
+        text="Merge Sort"
+        onClickFunc={() => animateSort(mergeSort([...arr]))}
       />
 
       <div
