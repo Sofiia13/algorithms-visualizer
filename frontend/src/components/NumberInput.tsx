@@ -20,8 +20,14 @@ export const NumberInput: React.FC<Props> = ({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = Number(e.target.value);
-    if (!isNaN(val) && val >= min && val <= max) onChange(val);
+    const val = e.target.value;
+    if (val === "") {
+      onChange(NaN);
+      return;
+    }
+
+    const num = Number(val);
+    if (!isNaN(num) && num >= min && num <= max) onChange(num);
   };
 
   return (

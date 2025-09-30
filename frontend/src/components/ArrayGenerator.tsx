@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { bubbleSort } from "../algorithms/bubbleSort";
 import type { Step } from "../algorithms/types";
 import { selectionSort } from "../algorithms/selectionSort";
@@ -11,22 +11,47 @@ import { ArrayChart } from "./ArrayChart";
 import { NumberInput } from "./NumberInput";
 
 export const ArrayGenerator = () => {
-  const [arrLength, setArrLength] = useState<number>(50);
+  const defaultValue = 50;
+
+  const [arrLength, setArrLength] = useState<number>(defaultValue);
   const [arr, setArr] = useState<number[]>([]);
   const [highlighted, setHighlighted] = useState<number[]>([]);
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<string | null>(
+    null
+  );
+
+  const timeoutsRef = useRef<number[]>([]);
+
+  const clearAllTimeouts = () => {
+    timeoutsRef.current.forEach((t) => clearTimeout(t));
+    timeoutsRef.current = [];
+  };
 
   const generateArr = () => {
+    clearAllTimeouts();
+    setSelectedAlgorithm(null);
+    setHighlighted([]);
+
+    const length = arrLength || defaultValue;
+
     const newArr: number[] = [];
-    for (let i = 0; i < arrLength; i++) {
+    for (let i = 0; i < length; i++) {
       const newNumber = Math.floor(Math.random() * 300);
       newArr.push(newNumber);
     }
     setArr(newArr);
+    setArrLength(length);
   };
 
+  useEffect(() => {
+    generateArr();
+  }, []);
+
   const animateSort = (sort: Step[]) => {
+    clearAllTimeouts();
+
     sort.forEach((step, idx) => {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         if (step.type === "swap" && step.array) {
           setArr(step.array);
         }
@@ -34,6 +59,7 @@ export const ArrayGenerator = () => {
           setHighlighted(step.indices);
         }
       }, idx * 100);
+      timeoutsRef.current.push(timeout);
     });
   };
 
@@ -52,10 +78,6 @@ export const ArrayGenerator = () => {
       "Heap Sort builds a max-heap from the array, then repeatedly extracts the maximum element and rebuilds the heap to sort the array. Complexity: O(n log n).",
   };
 
-  useEffect(() => {
-    generateArr();
-  }, []);
-
   return (
     <div>
       <div className="py-7 flex row gap-4">
@@ -67,43 +89,54 @@ export const ArrayGenerator = () => {
         />
         <button
           className="bg-[#7dd8e8] hover:bg-cyan-500 cursor-pointer text-black font-bold py-4 px-6 rounded"
-          onClick={generateArr}
+          onClick={() => {
+            generateArr();
+            setSelectedAlgorithm(null);
+          }}
         >
           Generate Array
         </button>
       </div>
 
       <div className="flex gap-4 p-4">
-        <Button
-          text="Bubble Sort"
-          tooltip={algorithmDescriptions["Bubble Sort"]}
-          onClickFunc={() => animateSort(bubbleSort([...arr]))}
-        />
-        <Button
-          text="Selection Sort"
-          tooltip={algorithmDescriptions["Selection Sort"]}
-          onClickFunc={() => animateSort(selectionSort([...arr]))}
-        />
-        <Button
-          text="Insertion Sort"
-          tooltip={algorithmDescriptions["Insertion Sort"]}
-          onClickFunc={() => animateSort(insertionSort([...arr]))}
-        />
-        <Button
-          text="Merge Sort"
-          tooltip={algorithmDescriptions["Merge Sort"]}
-          onClickFunc={() => animateSort(mergeSort([...arr]))}
-        />
-        <Button
-          text="Quick Sort"
-          tooltip={algorithmDescriptions["Quick Sort"]}
-          onClickFunc={() => animateSort(quickSort([...arr]))}
-        />
-        <Button
-          text="Heap Sort"
-          tooltip={algorithmDescriptions["Heap Sort"]}
-          onClickFunc={() => animateSort(heapSort([...arr]))}
-        />
+        {Object.keys(algorithmDescriptions).map((algorithm) => (
+          <Button
+            key={algorithm}
+            text={algorithm}
+            tooltip={algorithmDescriptions[algorithm]}
+            disabled={
+              selectedAlgorithm !== null && selectedAlgorithm !== algorithm
+            }
+            onClickFunc={() => {
+              setSelectedAlgorithm(algorithm);
+              switch (algorithm) {
+                case "Bubble Sort":
+                  animateSort(bubbleSort([...arr]));
+                  break;
+                case "Selection Sort":
+                  animateSort(selectionSort([...arr]));
+                  break;
+                case "Insertion Sort":
+                  animateSort(insertionSort([...arr]));
+                  break;
+                case "Merge Sort":
+                  animateSort(mergeSort([...arr]));
+                  break;
+                case "Quick Sort":
+                  animateSort(quickSort([...arr]));
+                  break;
+                case "Heap Sort":
+                  animateSort(heapSort([...arr]));
+                  break;
+                default:
+                  break;
+              }
+            }}
+            className={`${
+              algorithm === selectedAlgorithm ? "bg-yellow-600" : ""
+            }`}
+          />
+        ))}
       </div>
 
       <div style={{ marginTop: "10px" }}>
