@@ -11,7 +11,7 @@ import { ArrayChart } from "./ArrayChart";
 import { NumberInput } from "./NumberInput";
 
 export const SortingPage = () => {
-  const defaultValue = 50;
+  const defaultValue = 20;
 
   const [arrLength, setArrLength] = useState<number>(defaultValue);
   const [arr, setArr] = useState<number[]>([]);
