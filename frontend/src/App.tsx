@@ -8,19 +8,23 @@ import { NotFound } from "./components/NotFound";
 
 function App() {
   return (
-    <div className="bg-[#fffffe] min-h-screen lg:px-50 md:px-20 px-5 p-10">
+    <div className="flex flex-col min-h-screen bg-[#fffffe] lg:px-50 md:px-20 px-5 p-10">
+      {/* Контент розтягується на весь доступний простір */}
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/sorting" replace />} />
-        <Route path="/sorting" element={<SortingPage />} />
-        <Route path="/data-structures" element={<DataStructurePage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Navigate to="/sorting" replace />} />
+          <Route path="/sorting" element={<SortingPage />} />
+          <Route path="/data-structures" element={<DataStructurePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
 
       <Footer />
     </div>
   );
 }
+
 
 export default App;
