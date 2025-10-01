@@ -10,7 +10,7 @@ import { quickSort } from "../algorithms/quickSort";
 import { ArrayChart } from "./ArrayChart";
 import { NumberInput } from "./NumberInput";
 
-export const ArrayGenerator = () => {
+export const SortingPage = () => {
   const defaultValue = 50;
 
   const [arrLength, setArrLength] = useState<number>(defaultValue);
@@ -98,7 +98,11 @@ export const ArrayGenerator = () => {
         </button>
       </div>
 
-      <div className="flex gap-4 p-4">
+      <div
+        className="flex gap-4 py-4 justify-start sm:justify-center 
+             overflow-x-auto sm:overflow-visible 
+             sm:flex-wrap scrollbar-hide"
+      >
         {Object.keys(algorithmDescriptions).map((algorithm) => (
           <Button
             key={algorithm}
