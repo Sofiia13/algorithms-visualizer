@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "./Button";
+import { Button } from "../Button";
 import { DataStructureVisualizer } from "./DataStructureVisualizer";
 
 export const Heap: React.FC = () => {

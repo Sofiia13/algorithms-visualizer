@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { SortingPage } from "./components/SortingPage";
+import { SortingPage } from "./components/sorting/SortingPage";
 import { Header } from "./components/Header";
-import { DataStructurePage } from "./components/DataStructuresPage";
+import { DataStructurePage } from "./components/dataStructures/DataStructuresPage";
 import { Footer } from "./components/Footer";
+import { NotFound } from "./components/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Navigate to="/sorting" replace />} />
         <Route path="/sorting" element={<SortingPage />} />
         <Route path="/data-structures" element={<DataStructurePage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

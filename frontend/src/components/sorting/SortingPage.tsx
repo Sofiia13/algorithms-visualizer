@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { bubbleSort } from "../algorithms/bubbleSort";
-import type { Step } from "../algorithms/types";
-import { selectionSort } from "../algorithms/selectionSort";
-import { Button } from "./Button";
-import { insertionSort } from "../algorithms/insertionSort";
-import { mergeSort } from "../algorithms/mergeSort";
-import { heapSort } from "../algorithms/heapSort";
-import { quickSort } from "../algorithms/quickSort";
+import { bubbleSort } from "../../algorithms/bubbleSort";
+import type { Step } from "../../algorithms/types";
+import { selectionSort } from "../../algorithms/selectionSort";
+import { Button } from "../Button";
+import { insertionSort } from "../../algorithms/insertionSort";
+import { mergeSort } from "../../algorithms/mergeSort";
+import { heapSort } from "../../algorithms/heapSort";
+import { quickSort } from "../../algorithms/quickSort";
 import { ArrayChart } from "./ArrayChart";
 import { NumberInput } from "./NumberInput";
 

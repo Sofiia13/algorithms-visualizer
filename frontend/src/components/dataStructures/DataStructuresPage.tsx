@@ -1,5 +1,5 @@
 import type React from "react";
-import { Button } from "./Button";
+import { Button } from "../Button";
 import { useState } from "react";
 import { Stack } from "./Stack";
 import { Queue } from "./Queue";
