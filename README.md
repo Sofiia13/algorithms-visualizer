@@ -38,17 +38,17 @@ Built for learning, exploring, and just enjoying the beauty of algorithms ✨
     ```bash
     git clone https://github.com/sofiia13/algorithms-visualizer.git
     cd algorithms-visualizer
-    ```
+     ```
 
 ### 2. Install dependencies
-    ``` bash
+    ```bash
     npm install
-    ```
+     ```
 
 ### 3. Run the development server
-    ``` bash
+    ```bash
     npm run dev
-    ```
+     ```
 
 ## 🎮 How to Use
 
