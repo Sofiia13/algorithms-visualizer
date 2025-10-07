@@ -36,16 +36,16 @@ Built for learning, exploring, and just enjoying the beauty of algorithms ✨
 
 ### 1. Clone the repository
 
-    ```bash
-    git clone https://github.com/sofiia13/algorithms-visualizer.git
-    cd algorithms-visualizer
-    ```
+```bash
+git clone https://github.com/sofiia13/algorithms-visualizer.git
+cd algorithms-visualizer
+```
 
 ### 2. Install dependencies
     
-    ```bash
-    npm install
-    ```
+```bash
+npm install
+```
 
 ### 3. Run the development server
 
