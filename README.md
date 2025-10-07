@@ -49,9 +49,9 @@ Built for learning, exploring, and just enjoying the beauty of algorithms ✨
 
 ### 3. Run the development server
 
-    ```bash
-    npm run dev
-    ```
+```bash
+npm run dev
+```
 
 ## 🎮 How to Use
 
