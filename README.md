@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# 🧩 Algorithms Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Demo:** 👉 [https://sofiia13.github.io/algorithms-visualizer/](https://sofiia13.github.io/algorithms-visualizer/)
 
-Currently, two official plugins are available:
+An interactive **algorithms visualizer** that demonstrates how different **sorting algorithms** work — step by step, in real time.  
+Built for learning, exploring, and just enjoying the beauty of algorithms ✨
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
+- 🎞️ Real-time animation of sorting algorithms  
+- ⚙️ Adjustable **array size** 
+- 💡 Clear and minimal UI built for intuition and fun  
+- 🌐 Deployed on **GitHub Pages**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧠 Implemented Algorithms
+- 🫧 **Bubble Sort**  
+- 🔍 **Selection Sort**  
+- ✋ **Insertion Sort**  
+- ⚡ **Quick Sort**  
+- 🔀 **Merge Sort**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
+- **React** (JavaScript ES6+)  
+- **HTML5 / CSS3**  
+- **Vite** or **Create React App**  
+- **GitHub Pages** for deployment  
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧩 Installation & Setup
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 1. Clone the repository
+    ```bash
+    git clone https://github.com/sofiia13/algorithms-visualizer.git
+    cd algorithms-visualizer
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Install dependencies
+    ``` bash
+    npm install
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 3. Run the development server
+    ``` bash
+    npm run dev
+    ```
+
+## 🎮 How to Use
+
+  1. Click Generate New Array to create random data.
+
+  2. Adjust Array Size and Animation Speed using sliders.
+
+  3. Choose an algorithm from the dropdown list.
+
+  4. Press Sort and watch how the algorithm works!
