@@ -26,13 +26,13 @@ Built for learning, exploring, and just enjoying the beauty of algorithms ✨
 
 On a separate page of the project, you can visually explore how different data structures work:
 
-- 🔹 Stack — push/pop, LIFO
+- 🔹 **Stack** — push/pop, LIFO
 
-- 🔹 Queue — enqueue/dequeue, FIFO
+- 🔹 **Queue** — enqueue/dequeue, FIFO
 
-- 🔹 Priority Queue — elements with priority
+- 🔹 **Priority Queue** — elements with priority
 
-- 🔹 Heap — insertion/deletion, sorting
+- 🔹 **Heap** — insertion/deletion, sorting
 
 The interactive visualizer helps understand how basic data structures operate and allows experimenting with them in real time.
 
